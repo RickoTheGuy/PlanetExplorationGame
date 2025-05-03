@@ -60,3 +60,28 @@ class GameUI:
                 break
             else:
                 print("Invalid choice.")
+
+    def mine_elements(self):
+        print("\n🔧 Mining elements...")
+        for element in self.current_planet.elements:
+            self.inventory[element] = self.inventory.get(element, 0) + 1
+        self.fuel -= 10
+        print(f"✅ Mined {', '.join(self.current_planet.elements)}!\n")
+
+    def scan_next_planet(self):
+        print("\n🔭 Scanning new planet...")
+        self.fuel -= 5
+        self.current_planet = self.generate_planet()
+
+    def view_inventory(self):
+        print("\n📦 Inventory:")
+        if not self.inventory:
+            print("  (Empty)")
+        else:
+            for elem, qty in self.inventory.items():
+                print(f"  {elem}: {qty}")
+        print()
+
+if __name__ == "__main__":
+    game = GameUI()
+    game.main_menu()
