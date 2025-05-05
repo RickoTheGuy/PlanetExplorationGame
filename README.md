@@ -20,3 +20,19 @@ You're the commander of a lone exploration vessel, tasked with mining rare eleme
 - Scan planets for useful elements and land to mine them.
 - Watch out for high hazard levels — they might cost you more than fuel.
 - Manage your ship's inventory and avoid overloading.
+- Return to base before you run out of fuel... or die trying.
+
+---
+
+## ⚙️ Current Features
+
+✅ Terminal-based interactive UI  
+✅ Randomized planet generation with:
+   - Unique names  
+   - Varied terrain types  
+   - Hazard levels (Low, Medium, High)  
+   - Random selection of 3 elements per planet  
+
+✅ Fuel tracking and consumption  
+✅ Mining mechanic that adds elements to inventory  
+✅ Inventory display system  
