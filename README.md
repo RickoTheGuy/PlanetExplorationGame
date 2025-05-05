@@ -36,3 +36,24 @@ You're the commander of a lone exploration vessel, tasked with mining rare eleme
 ✅ Fuel tracking and consumption  
 ✅ Mining mechanic that adds elements to inventory  
 ✅ Inventory display system  
+
+## 🔮 Planned Features (Coming Soon)
+
+- 🔁 Full periodic table integration (118 elements)
+- 🤖 AI-generated planet names, lore, and surface descriptions
+- 🌌 Star systems with multiple planets and rare anomalies
+- ⚙️ Ship upgrade tree (fuel efficiency, better scanners, auto-miners)
+- 🪐 Planet classification system (habitable, gas giant, radioactive, etc.)
+- 🧬 Encounter events (alien signals, derelict ships, wormholes)
+- 🎨 Visual UI upgrade (maybe Godot or simple GUI with Tkinter/PyQt)
+- 💾 Save/load system with journey logs
+
+---
+
+## 🛠️ How to Run
+
+1. Make sure you have **Python 3.6+** installed.
+2. Clone this repo:
+   ```bash
+   git clone https://github.com/yourusername/elementum.git
+   cd elementum
