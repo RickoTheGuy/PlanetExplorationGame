@@ -46,7 +46,7 @@ You're the commander of a lone exploration vessel, tasked with mining rare eleme
 - 🪐 Planet classification system (habitable, gas giant, radioactive, etc.)
 - 🧬 Encounter events (alien signals, derelict ships, wormholes)
 - 🎨 Visual UI upgrade (maybe Godot or simple GUI with Tkinter/PyQt)
-
+- 💾 Save/load system with journey logs
 
 ---
 
