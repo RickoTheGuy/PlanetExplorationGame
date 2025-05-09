@@ -13,6 +13,7 @@ class GameUI:
         self.inventory = {}
         self.current_planet = self.generate_planet()
         self.planet_log = []
+        self.planet_log.append(self.current_planet.name)
 
 
     def generate_planet(self):
