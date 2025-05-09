@@ -12,6 +12,8 @@ class GameUI:
         self.fuel = 100
         self.inventory = {}
         self.current_planet = self.generate_planet()
+        self.planet_log = []
+
 
     def generate_planet(self):
         names = ["Crythas IV", "Zoron Beta", "Krelon Prime", "Myrrh 3"]
