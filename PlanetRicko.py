@@ -63,15 +63,57 @@ class GameUI:
 
     def mine_elements(self):
         print("\n🔧 Mining elements...")
+        
+        # Mine current planet's elements
         for element in self.current_planet.elements:
             self.inventory[element] = self.inventory.get(element, 0) + 1
-        if random.random() < 0.1:
-            bonus = random.choice(["H", "He", "Li", "Be", "Fe", "U"])  # Bonus pool
-            self.inventory[bonus] = self.inventory.get(bonus, 0) + 1
-            print(f"🎉 You found a bonus element: {bonus}!")
+
+        self.fuel -= 10
+
+        # Emergency fuel tank if fuel hits zero
+        if self.fuel <= 0 and not self.emergency_used:
+            print("🚨 Emergency fuel tank activated! +15 fuel.")
+            self.fuel = 15
+            self.emergency_used = True
+
+        # Fuel bonus for safe, low-hazard planets
         if self.current_planet.hazard_level == "LOW":
             self.fuel += 3
             print("⛽ Efficient mining! Recovered 3 fuel from stable terrain.")
+
+        # Rare element jackpot chance
+        if random.random() < 0.03:
+            rare = random.choice(["Au", "Pt", "Un"])
+            self.inventory[rare] = self.inventory.get(rare, 0) + 1
+            print(f"💎 JACKPOT! You struck {rare}!")
+
+        # Alien artifact find
+        if random.random() < 0.05:
+            self.inventory["Alien Artifact"] = self.inventory.get("Alien Artifact", 0) + 1
+            print("🛸 You found a mysterious Alien Artifact...")
+
+        # Element fusion if enough of one kind is gathered
+        for elem, qty in list(self.inventory.items()):
+            if qty >= 3:
+                fusion = f"{elem}X"
+                self.inventory[fusion] = self.inventory.get(fusion, 0) + 1
+                self.inventory[elem] -= 3
+                if self.inventory[elem] <= 0:
+                    del self.inventory[elem]
+                print(f"⚗️ Fusion Complete! {elem} → {fusion}")
+                break  # One fusion per trip
+
+        # Hazard-based item loss
+        if self.current_planet.hazard_level == "HIGH" and random.random() < 0.3:
+            if self.inventory:
+                lost = random.choice(list(self.inventory.keys()))
+                self.inventory[lost] -= 1
+                if self.inventory[lost] <= 0:
+                    del self.inventory[lost]
+                print(f"🔥 Mining accident! You lost some {lost}.")
+
+        # Mined elements confirmation
+        print(f"✅ Mined {', '.join(self.current_planet.elements)}!\n")
 
 
         self.fuel -= 10
