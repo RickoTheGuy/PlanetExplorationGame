@@ -65,6 +65,11 @@ class GameUI:
         print("\n🔧 Mining elements...")
         for element in self.current_planet.elements:
             self.inventory[element] = self.inventory.get(element, 0) + 1
+        if random.random() < 0.1:
+            bonus = random.choice(["H", "He", "Li", "Be", "Fe", "U"])  # Bonus pool
+            self.inventory[bonus] = self.inventory.get(bonus, 0) + 1
+            print(f"🎉 You found a bonus element: {bonus}!")
+
         self.fuel -= 10
         print(f"✅ Mined {', '.join(self.current_planet.elements)}!\n")
 
