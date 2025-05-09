@@ -121,8 +121,27 @@ class GameUI:
 
     def scan_next_planet(self):
         print("\n🔭 Scanning new planet...")
-        self.fuel -= 5
+
+        # Fuel-efficient scan perk (25% chance scan is free)
+        if random.random() < 0.25:
+            print("🔋 Your scanner ran in eco-mode! No fuel used.")
+        else:
+            self.fuel -= 5
+
+        # Emergency fuel tank if fuel hits zero
+        if self.fuel <= 0 and not self.emergency_used:
+            print("🚨 Emergency fuel tank activated! +15 fuel.")
+            self.fuel = 15
+            self.emergency_used = True
+
         self.current_planet = self.generate_planet()
+
+        # Bonus intel from scanner
+        if random.random() < 0.25:
+            print("📡 Scanner Bonus: Rich mineral veins detected!")
+        elif self.current_planet.hazard_level == "HIGH" and random.random() < 0.25:
+            print("⚠️ Warning: Hazard levels off the charts. Proceed with caution.")
+
 
     def view_inventory(self):
         print("\n📦 Inventory:")
